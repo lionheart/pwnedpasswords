@@ -84,6 +84,7 @@ setup(
     package_data={'': ['LICENSE', 'README.rst']},
     packages=['pwnedpasswords'],
     url="https://github.com/lionheart/pwnedpasswords",
+    download_url="https://github.com/lionheart/pwnedpasswords/tarball/{}".format(metadata['__version__']),
     version=metadata['__version__'],
     scripts=["bin/pwnedpasswords"]
 )
