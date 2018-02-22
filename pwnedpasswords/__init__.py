@@ -24,6 +24,10 @@ from .metadata import (
 )
 
 from .pwnedpasswords import Password
+from .exceptions import BadRequest
+from .exceptions import NoUserAgent
+from .exceptions import PasswordNotFound
+from .exceptions import RateLimitExceeded
 
 __all__ = [
     '__author__',
@@ -32,6 +36,10 @@ __all__ = [
     '__license__',
     '__maintainer__',
     '__version__',
-    'Password'
+    'Password',
+    'BadRequest',
+    'NoUserAgent',
+    'PasswordNotFound',
+    'RateLimitExceeded'
 ]
 

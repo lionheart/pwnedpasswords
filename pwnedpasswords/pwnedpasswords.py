@@ -43,19 +43,20 @@ class PwnedPasswordsAPI(object):
         request = urllib.request.Request(
             url=url,
             headers={
-                'User-Agent': f"pwnedpasswords (Python)"
+                'User-Agent': "pwnedpasswords (Python)"
             }
         )
         try:
             with urllib.request.urlopen(request) as f:
                 response = f.read()
         except urllib.error.HTTPError as e:
-            logger.exception()
+            logger.debug("Exception found: {}".format(e))
             Exception = exceptions.STATUS_CODES_TO_EXCEPTIONS.get(e.code)
             if Exception is not None:
-                raise Exception(e.url, e.code, e.msg, e.hdrs, e.fp)
-
-            raise
+                exception = Exception(e.url, e.code, e.msg, e.hdrs, e.fp)
+                raise exception from e
+            else:
+                raise
         else:
             return response.decode("utf-8-sig")
 
@@ -68,6 +69,7 @@ class Password(object):
         logger.setLevel(verbosity)
 
         self.original_password_is_hash = original_password_is_hash
+        logger.debug("original_password_is_hash=" + str(original_password_is_hash))
 
         if looks_like_sha1_re.match(value):
             self.value = value
@@ -82,10 +84,10 @@ class Password(object):
             entries = self.range()
             entry = entries.get(self.value[5:].upper())
             if entry is None:
-                logger.debug("No entry found, returning 0")
+                logger.info("No entry found, returning 0")
                 return 0
             else:
-                logger.debug("Entry found")
+                logger.info("Entry found")
                 return entry
         else:
             return self.search()
@@ -98,15 +100,15 @@ class Password(object):
 
             response = PwnedPasswordsAPI.request("pwnedpassword", self.value, **kwargs)
         except exceptions.PasswordNotFound:
-            logger.debug("No password found")
+            logger.info("No password found")
             return 0
         else:
-            logger.debug("Password found")
+            logger.info("Password found")
             count = int(response)
             return count
 
     def range(self):
-        response = PwnedPasswordsAPI.request("range", self.value[:5])
+        response = PwnedPasswordsAPI.request("range", self.value[:5].upper())
         entries = dict(map(convert_password_tuple, response.upper().split("\r\n")))
         return entries
 
