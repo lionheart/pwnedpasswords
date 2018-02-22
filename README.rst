@@ -20,7 +20,7 @@ Installation
 pwnedpasswords is available for download through the Python Package
 Index (PyPi). You can install it right away using pip.
 
-::
+.. code:: bash
 
     pip install pwnedpasswords
 
@@ -98,7 +98,7 @@ CLI Usage
 pwnedpasswords comes bundled with a handy command-line utility for
 checking passwords against the Pwned Passwords database.
 
-:: code:: bash
+.. code:: bash
 
     $ pwnedpasswords 123456password
     240
@@ -113,7 +113,7 @@ no matches in the API, the exit status will be ``0``.
 If you’d like to take a look under the hood to make sure things are
 working as they should, set the ``--verbose`` flag.
 
-::
+.. code:: bash
 
     $ pwnedpasswords 123456password --verbose
     INFO:pwnedpasswords.pwnedpasswords:https://api.pwnedpasswords.com/range/5052C
@@ -129,15 +129,7 @@ to contribute. Thanks!
 License
 -------
 
-Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
-
-.. raw:: html
-
-   <!-- Images -->
-
-.. raw:: html
-
-   <!-- Links -->
+Apache License, Version 2.0. See `LICENSE <LICENSE>`_ for details.
 
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
    :target: https://pypi.python.org/pypi/pwnedpasswords
