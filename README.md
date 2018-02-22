@@ -1,6 +1,6 @@
 # pwnedpasswords
 
-### A Command-line Utility and Python Library for Troy Hunt's pwnedpasswords's API
+### Python Library and CLI for Troy Hunt's pwnedpasswords's API
 
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
