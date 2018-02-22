@@ -2,6 +2,7 @@
 
 ### Python Library and CLI for the Pwned Password v2 API
 
+[![CI Status][ci-badge]][travis-repo-url]
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
@@ -125,9 +126,11 @@ Dan Loewenherz / ([@dlo](https://github.com/dlo))
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
+[ci-badge]: https://img.shields.io/travis/lionheart/pwnedpasswords.svg?style=flat
 [version-badge]: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
 [versions-badge]: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
 
+[travis-repo-url]: https://travis-ci.org/lionheart/pwnedpasswords
 [k-anonymous-url]: https://en.wikipedia.org/wiki/K-anonymity
 [semver-url]: http://www.semver.org
 [pypi-url]: https://pypi.python.org/pypi/pwnedpasswords
