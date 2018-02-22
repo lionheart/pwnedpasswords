@@ -38,7 +38,7 @@ And that's it! :tada:
 
 pwnedpasswords will automatically check to see if your provided input looks like a SHA-1 hash. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
 
-If you'd like to provide an already-hashed password as input, you don't need to do anything special--pwnedpasswords will detect that it looks like a SHA-1 hash and will not hash it again before providing it as input to the Pwned Passwords API.
+If you'd like to provide an already-hashed password as input, you don't need to do anything special--pwnedpasswords will detect that it looks like a SHA-1 hash and won't hash it again.
 
 ```python
 password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
@@ -92,7 +92,7 @@ password.range()
 
 ## Command Line Utility
 
-pwnedpasswords comes bundled with a handy command line utility for checking passwords against the Pwned Passwords database.
+pwnedpasswords comes bundled with a handy command line utility for checking passwords against the database. Usage is pretty straightforward--just provide the password in question as the first argument:
 
 ```bash
 $ pwnedpasswords 123456password
@@ -100,6 +100,24 @@ $ pwnedpasswords 123456password
 ```
 
 The output is simply the number of entries returned from the Pwned Passwords database.
+
+For help, just provide `-h` as a command-line argument.
+
+```bash
+$ pwnedpasswords -h
+usage: pwnedpasswords [-h] [--plain-text] [--verbose] password
+
+positional arguments:
+  password      The password or hashed password to search for.
+
+optional arguments:
+  -h, --help    show this help message and exit
+  --plain-text  Specify that the provided input is plain text, even if it
+                looks like a SHA-1 hash.
+  --verbose     Display verbose output.
+```
+
+### Notes
 
 The CLI returns an exit code equal to the base-10 log of the result count, plus 1. If there are no matches in the API, the exit status will be `0`. While returning the base-10 log might seem odd, note that most systems require exit status codes to be in the range 0-127, and I wanted the status code to provide *some* indication for severity. log(N) seemed to be a good tradeoff. The exit status is log(N)+1 since there are plenty of matches in the database with 1 match.
 
