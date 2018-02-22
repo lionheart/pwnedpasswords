@@ -1,4 +1,4 @@
-# Copyright 2014-2018 Lionheart Software LLC
+# Copyright 2014-2017 Lionheart Software LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,18 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-all: clean test publish
 
-clean:
-	rm -rf dist/
+import urllib.error
 
-test:
-	python setup.py test
+class NoUserAgent(urllib.error.HTTPError):
+    pass
 
-publish: clean
-	python2 setup.py bdist_wheel --universal
-	python3 setup.py bdist_wheel --universal
-	gpg --detach-sign -a dist/*.whl
-	twine upload dist/*
+class PasswordNotFound(urllib.error.HTTPError):
+    pass
+
+class RateLimitExceeded(urllib.error.HTTPError):
+    pass
+
+class BadRequest(urllib.error.HTTPError):
+    pass
+
+STATUS_CODES_TO_EXCEPTIONS = {
+    400: BadRequest,
+    403: NoUserAgent,
+    404: PasswordNotFound,
+    429: RateLimitExceeded,
+}
 

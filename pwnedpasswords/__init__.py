@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright 2016-2017 Lionheart Software LLC
+# Copyright 2018 Lionheart Software LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ from .metadata import (
     __version__,
 )
 
+from .pwnedpasswords import Password
+
 __all__ = [
     '__author__',
     '__copyright__',
@@ -30,5 +32,6 @@ __all__ = [
     '__license__',
     '__maintainer__',
     '__version__',
+    'Password'
 ]
 
