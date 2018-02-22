@@ -29,7 +29,7 @@ except ImportError:
 metadata_filename = "pwnedpasswords/metadata.py"
 metadata = runpy.run_path(metadata_filename)
 
-with open(os.path.join(os.path.dirname(__file__), "README.md")) as file:
+with open(os.path.join(os.path.dirname(__file__), "README.rst")) as file:
     long_description = file.read()
 
 classifiers = [
