@@ -20,10 +20,12 @@ pip install pwnedpasswords
 ```python
 import pwnedpasswords
 password = pwnedpasswords.Password("testing 123")
+
+# Returns the number of times `testing 123` appears in the Pwned Passwords database.
 password.check()
 ```
 
-That's all there is to it!
+And that's it! You're done.
 
 #### Notes
 
@@ -61,14 +63,24 @@ password.check(anonymous=False)
 
 You might want to do this if you'd prefer faster response times, and aren't that worried about leaking passwords you're searching for over the network.
 
-### `search`
+## Lower-level Usage
 
-If you just want to call the two endpoints manually, you can do that too.
+If you'd like direct access to the search and range endpoints, you can call them directly.
+
+### `search`
 
 ```python
 password = pwnedpasswords.Password("testing 123")
 password.search()
 # outputs 1
+```
+
+### `range`
+
+```python
+password = pwnedpasswords.Password("098765")
+password.range()
+# outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
 ```
 
 ## CLI Usage
