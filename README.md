@@ -83,9 +83,9 @@ password.range()
 # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
 ```
 
-## CLI Usage
+## Command Line Utility
 
-pwnedpasswords comes bundled with a handy command-line utility for checking passwords against the Pwned Passwords database.
+pwnedpasswords comes bundled with a handy command line utility for checking passwords against the Pwned Passwords database.
 
 ```bash
 $ pwnedpasswords 123456password
