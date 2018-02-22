@@ -8,7 +8,7 @@
 ## Features
 
 * [x] Command-line utility
-* [x] Support for Python 2.7, 3.5, and 3.6
+* [x] Support for Python 3.5 and 3.6
 * [ ] Tests
 
 ## Installation
