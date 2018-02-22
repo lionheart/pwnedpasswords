@@ -2,7 +2,7 @@
 
 import unittest
 import hashlib
-import pwnedpasswords
+from . import pwnedpasswords
 
 class TestPwnedPasswords(unittest.TestCase):
     def setUp(self):
