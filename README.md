@@ -5,13 +5,6 @@
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
-## Features
-
-* [x] Command-line utility
-* [x] Support for Python 3.5 and 3.6
-* [ ] Python 2.7 support
-* [ ] Tests
-
 ## Installation
 
 pwnedpasswords is available for download through the Python Package Index (PyPi). You can install it right away using pip.
