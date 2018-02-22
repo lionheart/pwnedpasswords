@@ -92,14 +92,14 @@ password.range()
 
 ## Command Line Utility
 
-pwnedpasswords comes bundled with a handy command line utility for checking passwords against the database. Usage is pretty straightforward--just provide the password in question as the first argument:
+pwnedpasswords comes bundled with a handy command line utility. Usage is pretty straightforward--just provide the password in question as the first argument:
 
 ```bash
 $ pwnedpasswords 123456password
 240
 ```
 
-The output is simply the number of entries returned from the Pwned Passwords database.
+The output is simply the number of entries found in the Pwned Passwords database.
 
 For help, just provide `-h` as a command-line argument.
 
@@ -117,7 +117,7 @@ optional arguments:
   --verbose     Display verbose output.
 ```
 
-### Notes
+#### Note
 
 The CLI returns an exit code equal to the base-10 log of the result count, plus 1. If there are no matches in the API, the exit status will be `0`. While returning the base-10 log might seem odd, note that most systems require exit status codes to be in the range 0-127, and I wanted the status code to provide *some* indication for severity. log(N) seemed to be a good tradeoff. The exit status is log(N)+1 since there are plenty of matches in the database with 1 match.
 
