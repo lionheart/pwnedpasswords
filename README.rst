@@ -98,7 +98,7 @@ CLI Usage
 pwnedpasswords comes bundled with a handy command-line utility for
 checking passwords against the Pwned Passwords database.
 
-::
+:: code:: bash
 
     $ pwnedpasswords 123456password
     240

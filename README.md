@@ -16,7 +16,7 @@
 
 pwnedpasswords is available for download through the Python Package Index (PyPi). You can install it right away using pip.
 
-```
+```bash
 pip install pwnedpasswords
 ```
 
@@ -75,7 +75,7 @@ password.search()
 
 pwnedpasswords comes bundled with a handy command-line utility for checking passwords against the Pwned Passwords database.
 
-```
+```bash
 $ pwnedpasswords 123456password
 240
 ```
@@ -86,7 +86,7 @@ If you'd like to use the CLI in a script, pwnedpasswords returns an exit code eq
 
 If you'd like to take a look under the hood to make sure things are working as they should, set the `--verbose` flag.
 
-```
+```bash
 $ pwnedpasswords 123456password --verbose
 INFO:pwnedpasswords.pwnedpasswords:https://api.pwnedpasswords.com/range/5052C
 INFO:pwnedpasswords.pwnedpasswords:Entry found
