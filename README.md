@@ -55,13 +55,13 @@ And that's it! You're done.
 
 pwnedpasswords will automatically check to see if your provided input looks like a SHA-1 hash. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
 
-If you'd like to check an already hashed password *before* providing it as input, set the `plain_text` parameter when initializing the `Password` object. There's not much value to doing this, since pwnedpasswords will do this for you automatically, but it gives you just a little extra control in case you're feeling paranoid.
+If you'd like to provide an already-hashed password as input, you don't need to do anything special--pwnedpasswords will detect that it looks like a SHA-1 hash and will not hash it again before providing it as input to the Pwned Passwords API.
 
 ```python
 password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
 ```
 
-Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`.
+Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`, so that the library knows to hash it before checking it against the database.
 
 ```python
 password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
