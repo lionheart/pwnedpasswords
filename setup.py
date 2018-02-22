@@ -78,4 +78,5 @@ setup(
     packages=['pwnedpasswords'],
     url="https://github.com/lionheart/pwnedpasswords",
     version=metadata['__version__'],
+    scripts=["bin/pwnedpasswords"]
 )

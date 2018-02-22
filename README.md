@@ -5,9 +5,15 @@
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
+## Features
+
+* [x] Command-line utility
+* [x] Support for Python 2.7, 3.5, and 3.6
+* [ ] Tests
+
 ## Installation
 
-pwnedpasswords is available for download through the Python Package Index (PyPi). You can install it right away using pip or easy_install.
+pwnedpasswords is available for download through the Python Package Index (PyPi). You can install it right away using pip.
 
 ```
 pip install pwnedpasswords
@@ -15,9 +21,17 @@ pip install pwnedpasswords
 
 ## Usage
 
-TODO
+```
+import pwnedpasswords
 
-## License |license|
+pwnedpasswords.check("123123")
+```
+
+## CLI Usage
+
+pwnedpasswords comes bundled with a handy command-line utility for checking passwords against the Pwned Passwords database.
+
+## License
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 

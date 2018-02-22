@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 import hashlib
 import logging
 import re
@@ -23,6 +24,9 @@ from . import exceptions
 
 looks_like_sha1_re = re.compile(r"^[a-fA-F0-9]{40}")
 
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 class PwnedPasswordsAPI(object):
     @staticmethod
     def url(*components, **kwargs):
@@ -30,7 +34,7 @@ class PwnedPasswordsAPI(object):
         if len(kwargs) > 0:
             value += "?" + urllib.parse.urlencode(kwargs)
 
-        print(value)
+        logger.info(value)
         return value
 
     @staticmethod
@@ -46,6 +50,7 @@ class PwnedPasswordsAPI(object):
             with urllib.request.urlopen(request) as f:
                 response = f.read()
         except urllib.error.HTTPError as e:
+            logger.exception()
             Exception = exceptions.STATUS_CODES_TO_EXCEPTIONS.get(e.code)
             if Exception is not None:
                 raise Exception(e.url, e.code, e.msg, e.hdrs, e.fp)
@@ -59,7 +64,9 @@ def convert_password_tuple(value):
     return (hash, int(count))
 
 class Password(object):
-    def __init__(self, value, original_password_is_hash=False):
+    def __init__(self, value, original_password_is_hash=False, verbosity=logging.WARNING):
+        logger.setLevel(verbosity)
+
         self.original_password_is_hash = original_password_is_hash
 
         if looks_like_sha1_re.match(value):
@@ -75,8 +82,10 @@ class Password(object):
             entries = self.range()
             entry = entries.get(self.value[5:].upper())
             if entry is None:
+                logger.debug("No entry found, returning 0")
                 return 0
             else:
+                logger.debug("Entry found")
                 return entry
         else:
             return self.search()
@@ -89,8 +98,10 @@ class Password(object):
 
             response = PwnedPasswordsAPI.request("pwnedpassword", self.value, **kwargs)
         except exceptions.PasswordNotFound:
+            logger.debug("No password found")
             return 0
         else:
+            logger.debug("Password found")
             count = int(response)
             return count
 
