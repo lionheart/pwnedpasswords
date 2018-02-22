@@ -78,7 +78,6 @@ setup(
     author=metadata['__author__'],
     author_email=metadata['__email__'],
     classifiers=classifiers,
-    cmdclass={'test': TestCommand},
     description="A Python wrapper for Troy Hunt's Pwned Passwords API.",
     install_requires=["future"],
     keywords="passwords security",
@@ -90,5 +89,7 @@ setup(
     url="https://github.com/lionheart/pwnedpasswords",
     download_url="https://github.com/lionheart/pwnedpasswords/tarball/{}".format(metadata['__version__']),
     version=metadata['__version__'],
-    scripts=["bin/pwnedpasswords"]
+    scripts=["bin/pwnedpasswords"],
+    test_suite='nose.collector',
+    tests_require=['nose'],
 )
