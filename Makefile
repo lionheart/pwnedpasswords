@@ -21,6 +21,7 @@ test:
 	python setup.py test
 
 publish: clean
+	pandoc --from=markdown --to=rst --output=README.rst README.md
 	python2 setup.py bdist_wheel --universal
 	python3 setup.py bdist_wheel --universal
 	gpg --detach-sign -a dist/*.whl
