@@ -45,7 +45,7 @@ password = pwnedpasswords.Password("1231231231231231231231231231231231231231", p
 
 ### `check`
 
-This is the preferred method to call the Pwned Passwords API. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is k-anonymous.
+This is the preferred method to call the Pwned Passwords API. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is [k-anonymous][k-anonymous-url].
 
 ```python
 password = pwnedpasswords.Password("username")
@@ -116,6 +116,7 @@ Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 [version-badge]: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
 [versions-badge]: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
 
+[k-anonymous-url]: https://en.wikipedia.org/wiki/K-anonymity
 [semver-url]: http://www.semver.org
 [pypi-url]: https://pypi.python.org/pypi/pwnedpasswords
 
