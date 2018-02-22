@@ -13,6 +13,8 @@ pwnedpasswords is available for download through the Python Package Index (PyPi)
 pip install pwnedpasswords
 ```
 
+---
+
 ## Usage
 
 ```python
@@ -20,6 +22,10 @@ import pwnedpasswords
 password = pwnedpasswords.Password("testing 123")
 password.check()
 ```
+
+That's all there is to it!
+
+#### Notes
 
 pwnedpasswords will automatically check to see if your provided input looks like a SHA-1 hash. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
 
