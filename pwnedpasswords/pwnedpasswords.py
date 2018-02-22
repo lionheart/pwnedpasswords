@@ -65,13 +65,10 @@ def convert_password_tuple(value):
     return (hash, int(count))
 
 class Password(object):
-    def __init__(self, value, original_password_is_hash=False, verbosity=logging.WARNING):
+    def __init__(self, value, plain_text=False, verbosity=logging.WARNING):
         logger.setLevel(verbosity)
 
-        self.original_password_is_hash = original_password_is_hash
-        logger.debug("original_password_is_hash=" + str(original_password_is_hash))
-
-        if looks_like_sha1_re.match(value):
+        if looks_like_sha1_re.match(value) and not plain_text:
             self.value = value
         else:
             # The provided value is plaintext, so let's hash it. If you'd like
@@ -80,7 +77,7 @@ class Password(object):
             self.value = hashlib.sha1(value.encode("utf8")).hexdigest()
 
     def check(self, anonymous=True):
-        if anonymous and not self.original_password_is_hash:
+        if anonymous:
             entries = self.range()
             entry = entries.get(self.value[5:].upper())
             if entry is None:
@@ -95,8 +92,8 @@ class Password(object):
     def search(self):
         try:
             kwargs = {}
-            if self.original_password_is_hash:
-                kwargs['originalPasswordIsAHash'] = "true"
+#           if self.plaintext:
+#               kwargs['originalPasswordIsAHash'] = "true"
 
             response = PwnedPasswordsAPI.request("pwnedpassword", self.value, **kwargs)
         except exceptions.PasswordNotFound:
