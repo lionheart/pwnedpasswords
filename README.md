@@ -113,9 +113,13 @@ INFO:pwnedpasswords.pwnedpasswords:Entry found
 240
 ```
 
-## Support/Questions
+## Thanks
 
-Please file an issue in GitHub if you run into any issues, or would like to contribute. Thanks!
+Special thanks to [Troy Hunt](https://www.troyhunt.com) for collecting this data and providing this service.
+
+## Authors
+
+Dan Loewenherz / ([@dlo](https://github.com/dlo))
 
 ## License
 
