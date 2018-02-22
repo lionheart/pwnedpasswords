@@ -54,7 +54,7 @@ password = pwnedpasswords.Password("1231231231231231231231231231231231231231", p
 
 ### `check`
 
-This is the preferred method to call the Pwned Passwords API. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is [k-anonymous][k-anonymous-url].
+This is the preferred method. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is [k-anonymous][k-anonymous-url].
 
 ```python
 password = pwnedpasswords.Password("username")
@@ -72,7 +72,7 @@ password.check(anonymous=False)
 
 You might want to do this if you'd prefer faster response times, and aren't that worried about leaking passwords you're searching for over the network.
 
-If you'd like direct access to the search and range endpoints, you can call them directly.
+If you'd like direct access to the search and range endpoints, you can also call them directly.
 
 ### `search`
 
