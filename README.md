@@ -21,9 +21,17 @@ limitations under the License.
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
+## About
+
+From https://haveibeenpwned.com/API/v2#PwnedPasswords:
+
+> Pwned Passwords are more than half a billion passwords which have previously been exposed in data breaches. The service is detailed in the [launch blog post](https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/) then [further expanded on with the release of version 2](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2). The entire data set is [both downloadable and searchable online via the Pwned Passwords page](https://haveibeenpwned.com/Passwords).
+
+`pwnedpasswords` is a small Python wrapper and command line utility that exposes the functionality of the Pwned Passwords API.
+
 ## Installation
 
-pwnedpasswords is available for download through the Python Package Index (PyPi). You can install it right away using pip.
+pwnedpasswords is available for download through [PyPi][pypi-url]. You can install it right away using pip.
 
 ```bash
 pip install pwnedpasswords
