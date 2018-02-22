@@ -41,6 +41,8 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as file:
     long_description = link_regex.sub(r"<https://github.com/lionheart/pwnedpasswords/blob/master/\1>", long_description)
     long_description = link_alternate_regex.sub(r"   :target: https://github.com/lionheart/pwnedpasswords/blob/master/\1", long_description)
 
+    long_description = long_description.replace("`__", "`_")
+
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",

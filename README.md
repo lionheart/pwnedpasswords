@@ -101,12 +101,8 @@ Please file an issue in GitHub if you run into any issues, or would like to cont
 
 Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
-<!-- Images -->
-
 [version-badge]: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
 [versions-badge]: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
-
-<!-- Links -->
 
 [semver-url]: http://www.semver.org
 [pypi-url]: https://pypi.python.org/pypi/pwnedpasswords

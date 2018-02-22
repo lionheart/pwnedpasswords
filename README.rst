@@ -129,7 +129,15 @@ to contribute. Thanks!
 License
 -------
 
-Apache License, Version 2.0. See `LICENSE <LICENSE>`_ for details.
+Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
+
+.. raw:: html
+
+   <!-- Images -->
+
+.. raw:: html
+
+   <!-- Links -->
 
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
    :target: https://pypi.python.org/pypi/pwnedpasswords
