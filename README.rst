@@ -16,6 +16,8 @@ Index (PyPi). You can install it right away using pip.
 
     pip install pwnedpasswords
 
+--------------
+
 Usage
 -----
 
@@ -24,6 +26,14 @@ Usage
     import pwnedpasswords
     password = pwnedpasswords.Password("testing 123")
 
+    # Return the number of times `testing 123` appears in the Pwned Passwords database.
+    password.check()
+
+And that’s it! You’re done.
+
+Notes
+^^^^^
+
 pwnedpasswords will automatically check to see if your provided input
 looks like a SHA-1 hash. If it looks like plain text, it’ll
 automatically hash it before sending it to the Pwned Passwords API.
@@ -31,26 +41,27 @@ automatically hash it before sending it to the Pwned Passwords API.
 If you’d like to check an already hashed password *before* providing it
 as input, set the ``plain_text`` parameter when initializing the
 ``Password`` object. There’s not much value to doing this, since
-pwnedpasswords does this for your automatically, but it’s just a little
-extra control in case you’re extra paranoid.
+pwnedpasswords will do this for you automatically, but it gives you just
+a little extra control in case you’re feeling paranoid.
 
 .. code:: python
 
     password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
 
-Likewise, if a password looks like a SHA-1 hash, but is actually a
+Likewise, if a password *looks* like a SHA-1 hash, but is actually a
 user-provided password, set ``plain_text`` to ``True``.
 
 .. code:: python
 
     password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
 
-check
-~~~~~
+``check``
+~~~~~~~~~
 
 This is the preferred method to call the Pwned Passwords API. By
 default, the ``check`` method uses the
-``https://api.pwnedpasswords.com/range/`` endpoint.
+``https://api.pwnedpasswords.com/range/`` endpoint, which is
+`k-anonymous <https://en.wikipedia.org/wiki/K-anonymity>`__.
 
 .. code:: python
 
@@ -72,11 +83,14 @@ You might want to do this if you’d prefer faster response times, and
 aren’t that worried about leaking passwords you’re searching for over
 the network.
 
-Search
-~~~~~~
+Lower-level Usage
+-----------------
 
-If you just want to call the two endpoints manually, you can do that
-too.
+If you’d like direct access to the search and range endpoints, you can
+call them directly.
+
+``search``
+~~~~~~~~~~
 
 .. code:: python
 
@@ -84,10 +98,19 @@ too.
     password.search()
     # outputs 1
 
-CLI Usage
----------
+``range``
+~~~~~~~~~
 
-pwnedpasswords comes bundled with a handy command-line utility for
+.. code:: python
+
+    password = pwnedpasswords.Password("098765")
+    password.range()
+    # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
+
+Command Line Utility
+--------------------
+
+pwnedpasswords comes bundled with a handy command line utility for
 checking passwords against the Pwned Passwords database.
 
 .. code:: bash

@@ -14,6 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Python 2 compatibility
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+from builtins import *
+from future import standard_library
+
+# urllib imports in Python 2.7
+standard_library.install_aliases()
+
+# Allow raise-from behavior in Python 2.7
+from future.utils import raise_from
+
 import sys
 import hashlib
 import logging
@@ -54,7 +66,7 @@ class PwnedPasswordsAPI(object):
             Exception = exceptions.STATUS_CODES_TO_EXCEPTIONS.get(e.code)
             if Exception is not None:
                 exception = Exception(e.url, e.code, e.msg, e.hdrs, e.fp)
-                raise exception from e
+                raise_from(exception, e)
             else:
                 raise
         else:
