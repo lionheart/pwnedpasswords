@@ -32,7 +32,7 @@ password = pwnedpasswords.Password("testing 123")
 password.check()
 ```
 
-And that's it!
+And that's it! :tada:
 
 #### Notes
 
