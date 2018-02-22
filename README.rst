@@ -131,14 +131,6 @@ License
 
 Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
 
-.. raw:: html
-
-   <!-- Images -->
-
-.. raw:: html
-
-   <!-- Links -->
-
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
    :target: https://pypi.python.org/pypi/pwnedpasswords
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
