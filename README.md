@@ -1,6 +1,6 @@
 # pwnedpasswords
 
-### Python Library and CLI for Troy Hunt's pwnedpasswords's API
+### Python Library and CLI for the Pwned Password v2 API
 
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
