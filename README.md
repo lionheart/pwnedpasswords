@@ -22,8 +22,6 @@ pwnedpasswords is available for download through [PyPi][pypi-url]. You can insta
 pip install pwnedpasswords
 ```
 
----
-
 ## Usage
 
 ```python
@@ -34,7 +32,7 @@ password = pwnedpasswords.Password("testing 123")
 password.check()
 ```
 
-And that's it! You're done.
+And that's it!
 
 #### Notes
 
@@ -51,6 +49,8 @@ Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provid
 ```python
 password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
 ```
+
+## Details
 
 ### `check`
 
@@ -71,8 +71,6 @@ password.check(anonymous=False)
 ```
 
 You might want to do this if you'd prefer faster response times, and aren't that worried about leaking passwords you're searching for over the network.
-
-## Lower-level Usage
 
 If you'd like direct access to the search and range endpoints, you can call them directly.
 
