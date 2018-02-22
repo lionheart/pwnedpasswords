@@ -77,7 +77,6 @@ setup(
     classifiers=classifiers,
     cmdclass={'test': TestCommand},
     description="A Python wrapper for Troy Hunt's Pwned Passwords API.",
-    extras_require={'restmapper': ["requests>=2.0.0"]},
     keywords="passwords security",
     license=metadata['__license__'],
     long_description=long_description,
