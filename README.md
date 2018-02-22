@@ -26,10 +26,9 @@ pip install pwnedpasswords
 
 ```python
 import pwnedpasswords
-password = pwnedpasswords.Password("testing 123")
 
 # Return the number of times `testing 123` appears in the Pwned Passwords database.
-password.check()
+pwnedpasswords.check("testing 123")
 ```
 
 And that's it! :tada:
@@ -41,13 +40,13 @@ pwnedpasswords will automatically check to see if your provided input looks like
 If you'd like to provide an already-hashed password as input, you don't need to do anything special--pwnedpasswords will detect that it looks like a SHA-1 hash and won't hash it again.
 
 ```python
-password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
+pwnedpasswords.check("b8dfb080bc33fb564249e34252bf143d88fc018f")
 ```
 
 Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`, so that the library knows to hash it before checking it against the database.
 
 ```python
-password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
+pwnedpasswords.check("1231231231231231231231231231231231231231", plain_text=True)
 ```
 
 ## Details
@@ -57,16 +56,14 @@ password = pwnedpasswords.Password("1231231231231231231231231231231231231231", p
 This is the preferred method. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is [k-anonymous][k-anonymous-url].
 
 ```python
-password = pwnedpasswords.Password("username")
-password.check()
+pwnedpasswords.check("mypassword")
 # 8340
 ```
 
 If you'd like to force pwnedpasswords to use the search endpoint instead (https://api.pwnedpasswords.com/pwnedpassword/), set the `anonymous` parameter to `False`.
 
 ```python
-password = pwnedpasswords.Password("password")
-password.check(anonymous=False)
+pwnedpasswords.check("password", anonymous=False)
 # 3303003
 ```
 
@@ -77,16 +74,14 @@ If you'd like direct access to the search and range endpoints, you can also call
 ### `search`
 
 ```python
-password = pwnedpasswords.Password("testing 123")
-password.search()
+pwnedpasswords.search("testing 123")
 # outputs 1
 ```
 
 ### `range`
 
 ```python
-password = pwnedpasswords.Password("098765")
-password.range()
+pwnedpasswords.range("098765")
 # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
 ```
 

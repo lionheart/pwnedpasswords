@@ -39,6 +39,18 @@ looks_like_sha1_re = re.compile(r"^[a-fA-F0-9]{40}")
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+def check(password, plain_text=False, anonymous=True):
+    password = Password(password, plain_text=plain_text)
+    return password.check(anonymous=anonymous)
+
+def search(password, plain_text=False):
+    password = Password(password, plain_text=plain_text)
+    return password.search()
+
+def range(password, plain_text=False):
+    password = Password(password, plain_text=plain_text)
+    return password.range()
+
 class PwnedPasswordsAPI(object):
     @staticmethod
     def url(*components, **kwargs):

@@ -24,6 +24,10 @@ from .metadata import (
 )
 
 from .pwnedpasswords import Password
+from .pwnedpasswords import check
+from .pwnedpasswords import search
+from .pwnedpasswords import range
+
 from .exceptions import BadRequest
 from .exceptions import NoUserAgent
 from .exceptions import PasswordNotFound
@@ -41,5 +45,8 @@ __all__ = [
     'NoUserAgent',
     'PasswordNotFound',
     'RateLimitExceeded'
+    'check'
+    'search'
+    'range'
 ]
 
