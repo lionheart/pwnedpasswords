@@ -1,0 +1,7 @@
+dependencies:
+  pre:
+    - python setup.py install
+test:
+  override:
+    - python setup.py test
+
