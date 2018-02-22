@@ -91,5 +91,5 @@ setup(
     version=metadata['__version__'],
     scripts=["bin/pwnedpasswords"],
     test_suite='nose.collector',
-    tests_require=['nose'],
+    tests_require=['nose', 'future'],
 )
