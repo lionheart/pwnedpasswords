@@ -32,6 +32,15 @@ metadata = runpy.run_path(metadata_filename)
 with open(os.path.join(os.path.dirname(__file__), "README.rst")) as file:
     long_description = file.read()
 
+    id_regex = re.compile(r"<\#([\w-]+)>")
+    link_regex = re.compile(r"<(\w+)>")
+    link_alternate_regex = re.compile(r"   :target: (\w+)")
+
+    long_description = id_regex.sub(r"<https://github.com/lionheart/pwnedpasswords#\1>", long_description)
+    long_description = link_regex.sub(r"<https://github.com/lionheart/pwnedpasswords/blob/master/\1>", long_description)
+    long_description = link_regex.sub(r"<https://github.com/lionheart/pwnedpasswords/blob/master/\1>", long_description)
+    long_description = link_alternate_regex.sub(r"   :target: https://github.com/lionheart/pwnedpasswords/blob/master/\1", long_description)
+
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
