@@ -6,14 +6,6 @@ Python Library and CLI for the Pwned Password v2 API
 
 |Version| |Python Versions|
 
-Features
---------
-
--  [x] Command-line utility
--  [x] Support for Python 3.5 and 3.6
--  [ ] Python 2.7 support
--  [ ] Tests
-
 Installation
 ------------
 

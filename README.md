@@ -34,9 +34,9 @@ Likewise, if a password looks like a SHA-1 hash, but is actually a user-provided
 password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
 ```
 
-### check
+### `check`
 
-This is the preferred method to call the Pwned Passwords API. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint.
+This is the preferred method to call the Pwned Passwords API. By default, the `check` method uses the `https://api.pwnedpasswords.com/range/` endpoint, which is k-anonymous.
 
 ```python
 password = pwnedpasswords.Password("username")
@@ -54,7 +54,7 @@ password.check(anonymous=False)
 
 You might want to do this if you'd prefer faster response times, and aren't that worried about leaking passwords you're searching for over the network.
 
-### Search
+### `search`
 
 If you just want to call the two endpoints manually, you can do that too.
 
