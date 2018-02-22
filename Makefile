@@ -18,7 +18,8 @@ clean:
 	rm -rf dist/
 
 test:
-	python setup.py test
+	python2 setup.py test
+	python3 setup.py test
 
 publish: clean
 	pandoc --from=markdown --to=rst --output=README.rst README.md
