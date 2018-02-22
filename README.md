@@ -57,7 +57,7 @@ This is the preferred method. By default, the `check` method uses the `https://a
 
 ```python
 pwnedpasswords.check("mypassword")
-# 8340
+# 34729
 ```
 
 If you'd like to force pwnedpasswords to use the search endpoint instead (https://api.pwnedpasswords.com/pwnedpassword/), set the `anonymous` parameter to `False`.

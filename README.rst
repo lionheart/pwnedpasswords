@@ -3,7 +3,7 @@
 Python Library and CLI for the Pwned Password v2 API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|Version| |Python Versions|
+|CI Status| |Version| |Python Versions|
 
 About
 -----
@@ -33,20 +33,17 @@ it right away using pip.
 
     pip install pwnedpasswords
 
---------------
-
 Usage
 -----
 
 .. code:: python
 
     import pwnedpasswords
-    password = pwnedpasswords.Password("testing 123")
 
     # Return the number of times `testing 123` appears in the Pwned Passwords database.
-    password.check()
+    pwnedpasswords.check("testing 123")
 
-And that’s it! You’re done.
+And that’s it! :tada:
 
 Notes
 ^^^^^
@@ -57,12 +54,11 @@ automatically hash it before sending it to the Pwned Passwords API.
 
 If you’d like to provide an already-hashed password as input, you don’t
 need to do anything special–pwnedpasswords will detect that it looks
-like a SHA-1 hash and will not hash it again before providing it as
-input to the Pwned Passwords API.
+like a SHA-1 hash and won’t hash it again.
 
 .. code:: python
 
-    password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
+    pwnedpasswords.check("b8dfb080bc33fb564249e34252bf143d88fc018f")
 
 Likewise, if a password *looks* like a SHA-1 hash, but is actually a
 user-provided password, set ``plain_text`` to ``True``, so that the
@@ -70,20 +66,21 @@ library knows to hash it before checking it against the database.
 
 .. code:: python
 
-    password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
+    pwnedpasswords.check("1231231231231231231231231231231231231231", plain_text=True)
+
+Details
+-------
 
 ``check``
 ~~~~~~~~~
 
-This is the preferred method to call the Pwned Passwords API. By
-default, the ``check`` method uses the
+This is the preferred method. By default, the ``check`` method uses the
 ``https://api.pwnedpasswords.com/range/`` endpoint, which is
 `k-anonymous <https://en.wikipedia.org/wiki/K-anonymity>`__.
 
 .. code:: python
 
-    password = pwnedpasswords.Password("username")
-    password.check()
+    pwnedpasswords.check("mypassword")
     # 8340
 
 If you’d like to force pwnedpasswords to use the search endpoint instead
@@ -92,27 +89,22 @@ parameter to ``False``.
 
 .. code:: python
 
-    password = pwnedpasswords.Password("password")
-    password.check(anonymous=False)
+    pwnedpasswords.check("password", anonymous=False)
     # 3303003
 
 You might want to do this if you’d prefer faster response times, and
 aren’t that worried about leaking passwords you’re searching for over
 the network.
 
-Lower-level Usage
------------------
-
 If you’d like direct access to the search and range endpoints, you can
-call them directly.
+also call them directly.
 
 ``search``
 ~~~~~~~~~~
 
 .. code:: python
 
-    password = pwnedpasswords.Password("testing 123")
-    password.search()
+    pwnedpasswords.search("testing 123")
     # outputs 1
 
 ``range``
@@ -120,23 +112,42 @@ call them directly.
 
 .. code:: python
 
-    password = pwnedpasswords.Password("098765")
-    password.range()
+    pwnedpasswords.range("098765")
     # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
 
 Command Line Utility
 --------------------
 
-pwnedpasswords comes bundled with a handy command line utility for
-checking passwords against the Pwned Passwords database.
+pwnedpasswords comes bundled with a handy command line utility. Usage is
+pretty straightforward–just provide the password in question as the
+first argument:
 
 .. code:: bash
 
     $ pwnedpasswords 123456password
     240
 
-The output is simply the number of entries returned from the Pwned
-Passwords database.
+The output is simply the number of entries found in the Pwned Passwords
+database.
+
+For help, just provide ``-h`` as a command-line argument.
+
+.. code:: bash
+
+    $ pwnedpasswords -h
+    usage: pwnedpasswords [-h] [--plain-text] [--verbose] password
+
+    positional arguments:
+      password      The password or hashed password to search for.
+
+    optional arguments:
+      -h, --help    show this help message and exit
+      --plain-text  Specify that the provided input is plain text, even if it
+                    looks like a SHA-1 hash.
+      --verbose     Display verbose output.
+
+Note
+^^^^
 
 The CLI returns an exit code equal to the base-10 log of the result
 count, plus 1. If there are no matches in the API, the exit status will
@@ -173,6 +184,8 @@ License
 Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
 
 .. |image0| image:: meta/repo-banner.png
+.. |CI Status| image:: https://img.shields.io/travis/lionheart/pwnedpasswords.svg?style=flat
+   :target: https://travis-ci.org/lionheart/pwnedpasswords
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
    :target: https://pypi.python.org/pypi/pwnedpasswords
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
