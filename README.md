@@ -21,7 +21,7 @@ pip install pwnedpasswords
 import pwnedpasswords
 password = pwnedpasswords.Password("testing 123")
 
-# Returns the number of times `testing 123` appears in the Pwned Passwords database.
+# Return the number of times `testing 123` appears in the Pwned Passwords database.
 password.check()
 ```
 
