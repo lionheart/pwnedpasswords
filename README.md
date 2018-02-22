@@ -102,7 +102,7 @@ $ pwnedpasswords 123456password
 
 The output is simply the number of entries returned from the Pwned Passwords database.
 
-If you'd like to use the CLI in a script, pwnedpasswords returns an exit code equal to the base-10 log of the result count, plus 1. If there are no matches in the API, the exit status will be `0`.
+The CLI returns an exit code equal to the base-10 log of the result count, plus 1. If there are no matches in the API, the exit status will be `0`. While returning the base-10 log might seem odd, note that most systems require exit status codes to be in the range 0-127, and I wanted the status code to provide *some* indication for severity. log(N) seemed to be a good tradeoff. The exit status is log(N)+1 since there are plenty of matches in the database with 1 match.
 
 If you'd like to take a look under the hood to make sure things are working as they should, set the `--verbose` flag.
 
