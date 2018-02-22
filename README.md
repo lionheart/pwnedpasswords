@@ -18,17 +18,18 @@ pip install pwnedpasswords
 ```python
 import pwnedpasswords
 password = pwnedpasswords.Password("testing 123")
+password.check()
 ```
 
 pwnedpasswords will automatically check to see if your provided input looks like a SHA-1 hash. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
 
-If you'd like to check an already hashed password *before* providing it as input, set the `plain_text` parameter when initializing the `Password` object. There's not much value to doing this, since pwnedpasswords does this for your automatically, but it's just a little extra control in case you're extra paranoid.
+If you'd like to check an already hashed password *before* providing it as input, set the `plain_text` parameter when initializing the `Password` object. There's not much value to doing this, since pwnedpasswords will do this for you automatically, but it gives you just a little extra control in case you're feeling paranoid.
 
 ```python
 password = pwnedpasswords.Password("b8dfb080bc33fb564249e34252bf143d88fc018f")
 ```
 
-Likewise, if a password looks like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`.
+Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`.
 
 ```python
 password = pwnedpasswords.Password("1231231231231231231231231231231231231231", plain_text=True)
