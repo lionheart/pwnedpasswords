@@ -3,7 +3,7 @@
 </p> -->
 
 ![](meta/repo-banner.png)
-![](meta/repo-banner-bottom.png)
+[![](meta/repo-banner-bottom.png)][lionheart-url]
 
 ### Python Library and CLI for the Pwned Password v2 API.
 
@@ -150,4 +150,5 @@ Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 [k-anonymous-url]: https://en.wikipedia.org/wiki/K-anonymity
 [semver-url]: http://www.semver.org
 [pypi-url]: https://pypi.python.org/pypi/pwnedpasswords
+[lionheart-url]: https://lionheartsw.com/
 
