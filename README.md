@@ -5,13 +5,9 @@
 ![](meta/repo-banner.png)
 [![](meta/repo-banner-bottom.png)][lionheart-url]
 
-### Python Library and CLI for the Pwned Password v2 API.
-
 [![CI Status][ci-badge]][travis-repo-url]
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
-
-## About
 
 From https://haveibeenpwned.com/API/v2#PwnedPasswords:
 
