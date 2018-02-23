@@ -1,4 +1,6 @@
-![](meta/repo-banner.png)
+<center>
+  <img src="meta/repo-banner.png" />
+</center>
 
 ### Python Library and CLI for the Pwned Password v2 API
 
