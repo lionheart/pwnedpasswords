@@ -4,7 +4,7 @@
 
 ![](meta/repo-banner.png)
 
-## Python Library and CLI for the Pwned Password v2 API.
+### Python Library and CLI for the Pwned Password v2 API.
 
 [![CI Status][ci-badge]][travis-repo-url]
 [![Version][version-badge]][pypi-url]
