@@ -1,6 +1,8 @@
-<p align="center">
+<!-- <p align="center">
   <img width="344" height="225" src="meta/repo-banner-small.png" />
-</p>
+</p> -->
+
+![](meta/repo-banner.png)
 
 ### Python Library and CLI for the Pwned Password v2 API
 
