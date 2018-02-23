@@ -3,6 +3,7 @@
 </p> -->
 
 ![](meta/repo-banner.png)
+![](meta/repo-banner-bottom.png)
 
 ### Python Library and CLI for the Pwned Password v2 API.
 
