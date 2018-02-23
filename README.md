@@ -1,6 +1,6 @@
-<center>
+<p align="center">
   <img width="344" height="225" src="meta/repo-banner-small.png" />
-</center>
+</p>
 
 ### Python Library and CLI for the Pwned Password v2 API
 
