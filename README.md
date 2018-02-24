@@ -9,7 +9,7 @@
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
-`pwnedpasswords` is a small Python wrapper and command line utility that exposes the functionality of the Pwned Passwords API.
+`pwnedpasswords` is a small Python wrapper and command line utility that lets you check if a passphrase has been pwned using the [Pwned Passwords v2 API](https://haveibeenpwned.com/API/v2#PwnedPasswords).
 
 From https://haveibeenpwned.com/API/v2#PwnedPasswords:
 
