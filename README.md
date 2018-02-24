@@ -9,13 +9,13 @@
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
-`pwnedpasswords` is a small Python wrapper and command line utility that lets you check if a passphrase has been pwned using the [Pwned Passwords v2 API](https://haveibeenpwned.com/API/v2#PwnedPasswords).
+`pwnedpasswords` is a small Python wrapper and command line utility that lets you check if a passphrase has been pwned using the [Pwned Passwords v2 API](https://haveibeenpwned.com/API/v2#PwnedPasswords). All provided password data is [k-anonymized][k-anonymous-url] before sending to the API, so plaintext passwords never leave your computer.
 
 From https://haveibeenpwned.com/API/v2#PwnedPasswords:
 
 > Pwned Passwords are more than half a billion passwords which have previously been exposed in data breaches. The service is detailed in the [launch blog post](https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/) then [further expanded on with the release of version 2](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2). The entire data set is [both downloadable and searchable online via the Pwned Passwords page](https://haveibeenpwned.com/Passwords).
 
-## Installation
+### Installation
 
 pwnedpasswords is available for download through [PyPi][pypi-url]. You can install it right away using pip.
 
@@ -28,23 +28,37 @@ pip install pwnedpasswords
 ```python
 import pwnedpasswords
 
-# Return the number of times `testing 123` appears in the Pwned Passwords database.
 pwnedpasswords.check("testing 123")
+# Returns 1
 ```
 
-And that's it! :tada:
+#### Security Note
+
+No plaintext passwords ever leave your machine using pwnedpasswords.
+
+How does that work? Well, the Pwned Passwords v2 API has a pretty cool [k-anonymity][k-anonymous-url] implementation.
+
+From https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/:
+
+> Formally, a data set can be said to hold the property of k-anonymity, if for every record in a released table, there are k − 1 other records identical to it.
+
+This allows us to only provide the first 5 characters of the SHA-1 hash of the password in question. The API then responds with a list of SHA-1 hash suffixes with that prefix. On average, that list contains 478 results.
+
+People smarter than I am have used [math](https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/) to show that 5-character prefixes are sufficient to maintain k-anonmity.
+
+In short: your plaintext passwords are protected if you use this library. You won't leak enough data to identity which passwords you're searching for.
 
 #### Notes
 
-pwnedpasswords will automatically check to see if your provided input looks like a SHA-1 hash. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
+pwnedpasswords automatically checks if your provided input looks like a SHA-1 hash. If it does, it won't do any further processing. If it looks like plain text, it'll automatically hash it before sending it to the Pwned Passwords API.
 
-If you'd like to provide an already-hashed password as input, you don't need to do anything special--pwnedpasswords will detect that it looks like a SHA-1 hash and won't hash it again.
+If you'd like to provide an already-hashed password as input to pwnedpasswords, you don't need to do anything--pwnedpasswords will detect that it looks like a SHA-1 hash and won't hash it again before sending it to the `range` endpoint.
 
 ```python
 pwnedpasswords.check("b8dfb080bc33fb564249e34252bf143d88fc018f")
 ```
 
-Likewise, if a password *looks* like a SHA-1 hash, but is actually a user-provided password, set `plain_text` to `True`, so that the library knows to hash it before checking it against the database.
+Likewise, if a password looks like a SHA-1 hash (i.e., matches the regex `[0-9a-fA-F]{40}`) but is actually a user-provided password, set `plain_text` to `True`, so that the library knows to hash it before sending it to the API.
 
 ```python
 pwnedpasswords.check("1231231231231231231231231231231231231231", plain_text=True)
@@ -133,6 +147,10 @@ Special thanks to [Troy Hunt](https://www.troyhunt.com) for collecting this data
 ## Authors
 
 Dan Loewenherz / ([@dlo](https://github.com/dlo))
+
+## See also
+
+[django-pwnedpasswords-validator](https://github.com/lionheart/django-pwnedpasswords-validator), a validator that checks user passwords against the Pwned Passwords API using this library.
 
 ## License
 
