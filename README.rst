@@ -1,12 +1,16 @@
-|image0|
+.. raw:: html
 
-Python Library and CLI for the Pwned Password v2 API
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   <!-- <p align="center">
+     <img width="344" height="225" src="meta/repo-banner-small.png" />
+   </p> -->
+
+|image0| |image1|
 
 |CI Status| |Version| |Python Versions|
 
-About
------
+``pwnedpasswords`` is a small Python wrapper and command line utility
+that lets you check if a passphrase has been pwned using the `Pwned
+Passwords v2 API <https://haveibeenpwned.com/API/v2#PwnedPasswords>`__.
 
 From https://haveibeenpwned.com/API/v2#PwnedPasswords:
 
@@ -18,9 +22,6 @@ From https://haveibeenpwned.com/API/v2#PwnedPasswords:
     2 <https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2>`__.
     The entire data set is `both downloadable and searchable online via
     the Pwned Passwords page <https://haveibeenpwned.com/Passwords>`__.
-
-``pwnedpasswords`` is a small Python wrapper and command line utility
-that exposes the functionality of the Pwned Passwords API.
 
 Installation
 ------------
@@ -34,7 +35,7 @@ it right away using pip.
     pip install pwnedpasswords
 
 Usage
------
+~~~~~
 
 .. code:: python
 
@@ -81,7 +82,7 @@ This is the preferred method. By default, the ``check`` method uses the
 .. code:: python
 
     pwnedpasswords.check("mypassword")
-    # 8340
+    # 34729
 
 If you’d like to force pwnedpasswords to use the search endpoint instead
 (https://api.pwnedpasswords.com/pwnedpassword/), set the ``anonymous``
@@ -184,6 +185,8 @@ License
 Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
 
 .. |image0| image:: meta/repo-banner.png
+.. |image1| image:: meta/repo-banner-bottom.png
+   :target: https://lionheartsw.com/
 .. |CI Status| image:: https://img.shields.io/travis/lionheart/pwnedpasswords.svg?style=flat
    :target: https://travis-ci.org/lionheart/pwnedpasswords
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat

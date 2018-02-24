@@ -23,7 +23,7 @@ pwnedpasswords is available for download through [PyPi][pypi-url]. You can insta
 pip install pwnedpasswords
 ```
 
-## Usage
+### Usage
 
 ```python
 import pwnedpasswords
