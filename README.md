@@ -44,7 +44,7 @@ From https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/:
 
 This allows us to only provide the first 5 characters of the SHA-1 hash of the password in question. The API then responds with a list of SHA-1 hash suffixes with that prefix. On average, that list contains 478 results.
 
-People smarter than I am have used [math](https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/) to show that 5-character prefixes are sufficient to maintain k-anonmity.
+People smarter than I am have used [math](https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/) to prove that 5-character prefixes are sufficient to maintain k-anonymity for this database.
 
 In short: your plaintext passwords are protected if you use this library. You won't leak enough data to identity which passwords you're searching for.
 
