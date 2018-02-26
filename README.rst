@@ -152,33 +152,45 @@ also call them directly.
 Command Line Utility
 --------------------
 
-pwnedpasswords comes bundled with a handy command line utility. Usage is
-pretty straightforward–just provide the password in question as the
-first argument:
+pwnedpasswords comes bundled with a handy command line utility.
 
 .. code:: bash
 
     $ pwnedpasswords 123456password
     240
 
-The output is simply the number of entries found in the Pwned Passwords
+Output is simply the number of entries found in the Pwned Passwords
 database.
+
+If you’d like to prevent input from appearing in your history, specify
+the ``--stdin`` argument to provide input via stdin (h/t to
+[@tveastman](https://github.com/tveastman) for requesting this).
+
+.. code:: bash
+
+    $ pwnedpasswords --stdin
+    mypassword
+    34729
 
 For help, just provide ``-h`` as a command-line argument.
 
 .. code:: bash
 
     $ pwnedpasswords -h
-    usage: pwnedpasswords [-h] [--plain-text] [--verbose] password
+    usage: pwnedpasswords [-h] [--verbose] [--plain-text] (--stdin | password)
+
+    Checks Pwned Passwords API to see if provided plaintext data was found in a
+    data breach.
 
     positional arguments:
       password      The password or hashed password to search for.
 
     optional arguments:
       -h, --help    show this help message and exit
+      --verbose     Display verbose output.
       --plain-text  Specify that the provided input is plain text, even if it
                     looks like a SHA-1 hash.
-      --verbose     Display verbose output.
+      --stdin       Read provided input from stdin.
 
 Note
 ^^^^
