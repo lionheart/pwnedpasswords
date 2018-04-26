@@ -70,7 +70,8 @@ results.
 
 People smarter than I am have used
 `math <https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/>`__
-to show that 5-character prefixes are sufficient to maintain k-anonmity.
+to prove that 5-character prefixes are sufficient to maintain
+k-anonymity for this database.
 
 In short: your plaintext passwords are protected if you use this
 library. You won’t leak enough data to identity which passwords you’re
