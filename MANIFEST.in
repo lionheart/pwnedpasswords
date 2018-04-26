@@ -1,2 +1,4 @@
 include README.rst
-include LINCESE
+include README.md
+include LICENSE
+include NOTICE
