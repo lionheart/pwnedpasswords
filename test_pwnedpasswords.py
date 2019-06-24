@@ -13,9 +13,6 @@ class TestPwnedPasswords(unittest.TestCase):
     def test_check(self):
         self.assertEqual(self.password.check(), self.num_matches)
 
-    def test_search(self):
-        self.assertEqual(self.password.search(), self.num_matches)
-
     def test_range(self):
         sha = "601F1889667EFAEBB33B8C12572835DA3F027F78"
         result = self.password.range().get(sha[5:])
