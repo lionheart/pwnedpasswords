@@ -86,13 +86,6 @@ You might want to do this if you'd prefer faster response times, and aren't that
 
 If you'd like direct access to the search and range endpoints, you can also call them directly.
 
-### `search`
-
-```python
-pwnedpasswords.search("testing 123")
-# outputs 1
-```
-
 ### `range`
 
 ```python
