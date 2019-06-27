@@ -36,7 +36,6 @@ from . import exceptions
 
 looks_like_sha1_re = re.compile(r"^[a-fA-F0-9]{40}")
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 def check(password, plain_text=False, anonymous=True):
