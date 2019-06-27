@@ -134,14 +134,6 @@ the network.
 If you’d like direct access to the search and range endpoints, you can
 also call them directly.
 
-``search``
-~~~~~~~~~~
-
-.. code:: python
-
-    pwnedpasswords.search("testing 123")
-    # outputs 1
-
 ``range``
 ~~~~~~~~~
 
