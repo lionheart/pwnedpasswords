@@ -17,14 +17,14 @@ sending to the API, so plaintext passwords never leave your computer.
 
 From https://haveibeenpwned.com/API/v2#PwnedPasswords:
 
-    Pwned Passwords are more than half a billion passwords which have
-    previously been exposed in data breaches. The service is detailed in
-    the `launch blog
-    post <https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/>`__
-    then `further expanded on with the release of version
-    2 <https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2>`__.
-    The entire data set is `both downloadable and searchable online via
-    the Pwned Passwords page <https://haveibeenpwned.com/Passwords>`__.
+   Pwned Passwords are more than half a billion passwords which have
+   previously been exposed in data breaches. The service is detailed in
+   the `launch blog
+   post <https://www.troyhunt.com/introducing-306-million-freely-downloadable-pwned-passwords/>`__
+   then `further expanded on with the release of version
+   2 <https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2>`__.
+   The entire data set is `both downloadable and searchable online via
+   the Pwned Passwords page <https://haveibeenpwned.com/Passwords>`__.
 
 Installation
 ~~~~~~~~~~~~
@@ -35,17 +35,17 @@ it right away using pip.
 
 .. code:: bash
 
-    pip install pwnedpasswords
+   pip install pwnedpasswords
 
 Usage
 ~~~~~
 
 .. code:: python
 
-    import pwnedpasswords
+   import pwnedpasswords
 
-    pwnedpasswords.check("testing 123")
-    # Returns 1
+   pwnedpasswords.check("testing 123")
+   # Returns 1
 
 Security Note
 ^^^^^^^^^^^^^
@@ -59,9 +59,9 @@ implementation.
 From
 https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/:
 
-    Formally, a data set can be said to hold the property of
-    k-anonymity, if for every record in a released table, there are k −
-    1 other records identical to it.
+   Formally, a data set can be said to hold the property of k-anonymity,
+   if for every record in a released table, there are k − 1 other
+   records identical to it.
 
 This allows us to only provide the first 5 characters of the SHA-1 hash
 of the password in question. The API then responds with a list of SHA-1
@@ -92,7 +92,7 @@ it to the ``range`` endpoint.
 
 .. code:: python
 
-    pwnedpasswords.check("b8dfb080bc33fb564249e34252bf143d88fc018f")
+   pwnedpasswords.check("b8dfb080bc33fb564249e34252bf143d88fc018f")
 
 Likewise, if a password looks like a SHA-1 hash (i.e., matches the regex
 ``[0-9a-fA-F]{40}``) but is actually a user-provided password, set
@@ -101,7 +101,7 @@ sending it to the API.
 
 .. code:: python
 
-    pwnedpasswords.check("1231231231231231231231231231231231231231", plain_text=True)
+   pwnedpasswords.check("1231231231231231231231231231231231231231", plain_text=True)
 
 Details
 -------
@@ -115,8 +115,8 @@ This is the preferred method. By default, the ``check`` method uses the
 
 .. code:: python
 
-    pwnedpasswords.check("mypassword")
-    # 34729
+   pwnedpasswords.check("mypassword")
+   # 34729
 
 If you’d like to force pwnedpasswords to use the search endpoint instead
 (https://api.pwnedpasswords.com/pwnedpassword/), set the ``anonymous``
@@ -124,8 +124,8 @@ parameter to ``False``.
 
 .. code:: python
 
-    pwnedpasswords.check("password", anonymous=False)
-    # 3303003
+   pwnedpasswords.check("password", anonymous=False)
+   # 3303003
 
 You might want to do this if you’d prefer faster response times, and
 aren’t that worried about leaking passwords you’re searching for over
@@ -139,8 +139,8 @@ also call them directly.
 
 .. code:: python
 
-    pwnedpasswords.range("098765")
-    # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
+   pwnedpasswords.range("098765")
+   # outputs a dictionary mapping SHA-1 hash suffixes to frequency counts
 
 Command Line Utility
 --------------------
@@ -149,8 +149,8 @@ pwnedpasswords comes bundled with a handy command line utility.
 
 .. code:: bash
 
-    $ pwnedpasswords 123456password
-    240
+   $ pwnedpasswords 123456password
+   240
 
 Output is simply the number of entries found in the Pwned Passwords
 database.
@@ -161,29 +161,29 @@ the ``--stdin`` argument to provide input via stdin (h/t to
 
 .. code:: bash
 
-    $ pwnedpasswords --stdin
-    mypassword
-    34729
+   $ pwnedpasswords --stdin
+   mypassword
+   34729
 
 For help, just provide ``-h`` as a command-line argument.
 
 .. code:: bash
 
-    $ pwnedpasswords -h
-    usage: pwnedpasswords [-h] [--verbose] [--plain-text] (--stdin | password)
+   $ pwnedpasswords -h
+   usage: pwnedpasswords [-h] [--verbose] [--plain-text] (--stdin | password)
 
-    Checks Pwned Passwords API to see if provided plaintext data was found in a
-    data breach.
+   Checks Pwned Passwords API to see if provided plaintext data was found in a
+   data breach.
 
-    positional arguments:
-      password      The password or hashed password to search for.
+   positional arguments:
+     password      The password or hashed password to search for.
 
-    optional arguments:
-      -h, --help    show this help message and exit
-      --verbose     Display verbose output.
-      --plain-text  Specify that the provided input is plain text, even if it
-                    looks like a SHA-1 hash.
-      --stdin       Read provided input from stdin.
+   optional arguments:
+     -h, --help    show this help message and exit
+     --verbose     Display verbose output.
+     --plain-text  Specify that the provided input is plain text, even if it
+                   looks like a SHA-1 hash.
+     --stdin       Read provided input from stdin.
 
 Note
 ^^^^
@@ -201,10 +201,10 @@ working as they should, set the ``--verbose`` flag.
 
 .. code:: bash
 
-    $ pwnedpasswords 123456password --verbose
-    INFO:pwnedpasswords.pwnedpasswords:https://api.pwnedpasswords.com/range/5052C
-    INFO:pwnedpasswords.pwnedpasswords:Entry found
-    240
+   $ pwnedpasswords 123456password --verbose
+   INFO:pwnedpasswords.pwnedpasswords:https://api.pwnedpasswords.com/range/5052C
+   INFO:pwnedpasswords.pwnedpasswords:Entry found
+   240
 
 Thanks
 ------
