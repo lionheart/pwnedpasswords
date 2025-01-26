@@ -38,17 +38,17 @@ looks_like_sha1_re = re.compile(r"^[a-fA-F0-9]{40}")
 
 logger = logging.getLogger(__name__)
 
-def check(password, plain_text=False, anonymous=True):
+def check(password, plain_text=False, timeout=None, anonymous=True):
     password = Password(password, plain_text=plain_text)
-    return password.check(anonymous=anonymous)
+    return password.check(timeout=timeout, anonymous=anonymous)
 
-def search(password, plain_text=False):
+def search(password, plain_text=False, timeout=None):
     password = Password(password, plain_text=plain_text)
-    return password.search()
+    return password.search(timeout=timeout)
 
-def range(password, plain_text=False):
+def range(password, plain_text=False, timeout=None):
     password = Password(password, plain_text=plain_text)
-    return password.range()
+    return password.range(timeout=timeout)
 
 class PwnedPasswordsAPI(object):
     @staticmethod
@@ -61,7 +61,7 @@ class PwnedPasswordsAPI(object):
         return value
 
     @staticmethod
-    def request(path, value, **kwargs):
+    def request(path, value, timeout=None, **kwargs):
         url = PwnedPasswordsAPI.url(path, value, **kwargs)
         request = urllib.request.Request(
             url=url,
@@ -70,7 +70,7 @@ class PwnedPasswordsAPI(object):
             }
         )
         try:
-            with urllib.request.urlopen(request) as f:
+            with urllib.request.urlopen(request, timeout=timeout) as f:
                 response = f.read()
         except urllib.error.HTTPError as e:
             logger.debug("Exception found: {}".format(e))
@@ -99,9 +99,9 @@ class Password(object):
             # initializer.
             self.value = hashlib.sha1(value.encode("utf8")).hexdigest()
 
-    def check(self, anonymous=True):
+    def check(self, timeout=None, anonymous=True):
         if anonymous:
-            entries = self.range()
+            entries = self.range(timeout=timeout)
             entry = entries.get(self.value[5:].upper())
             if entry is None:
                 logger.info("No entry found, returning 0")
@@ -110,11 +110,13 @@ class Password(object):
                 logger.info("Entry found")
                 return entry
         else:
-            return self.search()
+            return self.search(timeout=timeout)
 
-    def search(self):
+    def search(self, timeout=None):
         try:
             kwargs = {}
+            if timeout:
+                kwargs['timeout'] = timeout
 #           if self.plaintext:
 #               kwargs['originalPasswordIsAHash'] = "true"
 
@@ -127,8 +129,8 @@ class Password(object):
             count = int(response)
             return count
 
-    def range(self):
-        response = PwnedPasswordsAPI.request("range", self.value[:5].upper())
+    def range(self, timeout=None):
+        response = PwnedPasswordsAPI.request("range", self.value[:5].upper(), timeout=timeout)
         entries = dict(map(convert_password_tuple, response.upper().split("\r\n")))
         return entries
 
