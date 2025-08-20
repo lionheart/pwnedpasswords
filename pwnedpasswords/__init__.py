@@ -24,29 +24,20 @@ from .metadata import (
 )
 
 from .pwnedpasswords import Password
-from .pwnedpasswords import check
-from .pwnedpasswords import search
-from .pwnedpasswords import range
-
 from .exceptions import BadRequest
 from .exceptions import NoUserAgent
 from .exceptions import PasswordNotFound
-from .exceptions import RateLimitExceeded
 
 __all__ = [
-    '__author__',
-    '__copyright__',
-    '__email__',
-    '__license__',
-    '__maintainer__',
-    '__version__',
-    'Password',
-    'BadRequest',
-    'NoUserAgent',
-    'PasswordNotFound',
-    'RateLimitExceeded'
-    'check'
-    'search'
-    'range'
+    "__author__",
+    "__copyright__",
+    "__email__",
+    "__license__",
+    "__maintainer__",
+    "__version__",
+    "Password",
+    "BadRequest",
+    "NoUserAgent",
+    "PasswordNotFound",
+    "RateLimitExceededchecksearchrange",
 ]
-

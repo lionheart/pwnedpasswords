@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import unittest
-import hashlib
 from . import pwnedpasswords
+
 
 class TestPwnedPasswords(unittest.TestCase):
     def setUp(self):
@@ -18,7 +18,7 @@ class TestPwnedPasswords(unittest.TestCase):
         result = self.password.range().get(sha[5:])
         self.assertEqual(result, self.num_matches)
 
+
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(TestPwnedPasswords)
     unittest.TextTestRunner(verbosity=2).run(suite)
-

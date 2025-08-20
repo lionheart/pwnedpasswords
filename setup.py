@@ -15,16 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from distutils.cmd import Command
 import os
-import re
 import unittest
 import runpy
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import Command, setup
 
 metadata_filename = "pwnedpasswords/metadata.py"
 metadata = runpy.run_path(metadata_filename)
@@ -48,6 +42,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
+
 class TestCommand(Command):
     user_options = []
 
@@ -59,27 +54,30 @@ class TestCommand(Command):
 
     def run(self):
         from test_pwnedpasswords import TestPwnedPasswords
+
         suite = unittest.TestLoader().loadTestsFromTestCase(TestPwnedPasswords)
         unittest.TextTestRunner(verbosity=2).run(suite)
 
 
 setup(
-    author=metadata['__author__'],
-    author_email=metadata['__email__'],
+    author=metadata["__author__"],
+    author_email=metadata["__email__"],
     classifiers=classifiers,
     description="A Python wrapper for Troy Hunt's Pwned Passwords API.",
-    install_requires=["future"],
+    install_requires=[],
     keywords="passwords security",
-    license=metadata['__license__'],
+    license=metadata["__license__"],
     long_description=long_description,
-    long_description_content_type='text/markdown',
-    name='pwnedpasswords',
-    package_data={'': ['LICENSE', 'README.rst']},
-    packages=['pwnedpasswords'],
+    long_description_content_type="text/markdown",
+    name="pwnedpasswords",
+    package_data={"": ["LICENSE", "README.rst"]},
+    packages=["pwnedpasswords"],
     url="https://github.com/lionheart/pwnedpasswords",
-    download_url="https://github.com/lionheart/pwnedpasswords/tarball/{}".format(metadata['__version__']),
-    version=metadata['__version__'],
+    download_url="https://github.com/lionheart/pwnedpasswords/tarball/{}".format(
+        metadata["__version__"]
+    ),
+    version=metadata["__version__"],
     scripts=["bin/pwnedpasswords"],
-    test_suite='nose.collector',
-    tests_require=['nose', 'future'],
+    test_suite="nose.collector",
+    tests_require=["nose"],
 )
