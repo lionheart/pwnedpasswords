@@ -15,16 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from distutils.cmd import Command
 import os
-import re
 import unittest
 import runpy
-
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import Command, setup
 
 metadata_filename = "pwnedpasswords/metadata.py"
 metadata = runpy.run_path(metadata_filename)
@@ -70,7 +64,7 @@ setup(
     author_email=metadata["__email__"],
     classifiers=classifiers,
     description="A Python wrapper for Troy Hunt's Pwned Passwords API.",
-    install_requires=["future"],
+    install_requires=[],
     keywords="passwords security",
     license=metadata["__license__"],
     long_description=long_description,
@@ -85,5 +79,5 @@ setup(
     version=metadata["__version__"],
     scripts=["bin/pwnedpasswords"],
     test_suite="nose.collector",
-    tests_require=["nose", "future"],
+    tests_require=["nose"],
 )

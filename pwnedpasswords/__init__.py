@@ -24,14 +24,9 @@ from .metadata import (
 )
 
 from .pwnedpasswords import Password
-from .pwnedpasswords import check
-from .pwnedpasswords import search
-from .pwnedpasswords import range
-
 from .exceptions import BadRequest
 from .exceptions import NoUserAgent
 from .exceptions import PasswordNotFound
-from .exceptions import RateLimitExceeded
 
 __all__ = [
     "__author__",

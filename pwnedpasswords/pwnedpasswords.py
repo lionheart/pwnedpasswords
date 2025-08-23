@@ -77,7 +77,7 @@ class PwnedPasswordsAPI(object):
             Exception = exceptions.STATUS_CODES_TO_EXCEPTIONS.get(e.code)
             if Exception is not None:
                 exception = Exception(e.url, e.code, e.msg, e.hdrs, e.fp)
-                raise_from(exception, e)
+                raise exception from e
             else:
                 raise
         else:
@@ -119,8 +119,6 @@ class Password(object):
             kwargs = {}
             if timeout:
                 kwargs["timeout"] = timeout
-            #           if self.plaintext:
-            #               kwargs['originalPasswordIsAHash'] = "true"
 
             response = PwnedPasswordsAPI.request("pwnedpassword", self.value, **kwargs)
         except exceptions.PasswordNotFound:
