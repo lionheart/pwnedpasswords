@@ -34,19 +34,15 @@ from .exceptions import PasswordNotFound
 from .exceptions import RateLimitExceeded
 
 __all__ = [
-    '__author__',
-    '__copyright__',
-    '__email__',
-    '__license__',
-    '__maintainer__',
-    '__version__',
-    'Password',
-    'BadRequest',
-    'NoUserAgent',
-    'PasswordNotFound',
-    'RateLimitExceeded'
-    'check'
-    'search'
-    'range'
+    "__author__",
+    "__copyright__",
+    "__email__",
+    "__license__",
+    "__maintainer__",
+    "__version__",
+    "Password",
+    "BadRequest",
+    "NoUserAgent",
+    "PasswordNotFound",
+    "RateLimitExceededchecksearchrange",
 ]
-

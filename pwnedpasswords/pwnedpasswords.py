@@ -15,8 +15,7 @@
 # limitations under the License.
 
 # Python 2 compatibility
-from __future__ import (absolute_import, division,
-                        print_function, unicode_literals)
+from __future__ import absolute_import, division, print_function, unicode_literals
 from future import standard_library
 from builtins import *
 
@@ -38,17 +37,21 @@ looks_like_sha1_re = re.compile(r"^[a-fA-F0-9]{40}")
 
 logger = logging.getLogger(__name__)
 
+
 def check(password, plain_text=False, timeout=None, anonymous=True):
     password = Password(password, plain_text=plain_text)
     return password.check(timeout=timeout, anonymous=anonymous)
+
 
 def search(password, plain_text=False, timeout=None):
     password = Password(password, plain_text=plain_text)
     return password.search(timeout=timeout)
 
+
 def range(password, plain_text=False, timeout=None):
     password = Password(password, plain_text=plain_text)
     return password.range(timeout=timeout)
+
 
 class PwnedPasswordsAPI(object):
     @staticmethod
@@ -64,10 +67,7 @@ class PwnedPasswordsAPI(object):
     def request(path, value, timeout=None, **kwargs):
         url = PwnedPasswordsAPI.url(path, value, **kwargs)
         request = urllib.request.Request(
-            url=url,
-            headers={
-                'User-Agent': "pwnedpasswords (Python)"
-            }
+            url=url, headers={"User-Agent": "pwnedpasswords (Python)"}
         )
         try:
             with urllib.request.urlopen(request, timeout=timeout) as f:
@@ -83,9 +83,11 @@ class PwnedPasswordsAPI(object):
         else:
             return response.decode("utf-8-sig")
 
+
 def convert_password_tuple(value):
     hash, count = value.split(":")
     return (hash, int(count))
+
 
 class Password(object):
     def __init__(self, value, plain_text=False, verbosity=logging.WARNING):
@@ -116,9 +118,9 @@ class Password(object):
         try:
             kwargs = {}
             if timeout:
-                kwargs['timeout'] = timeout
-#           if self.plaintext:
-#               kwargs['originalPasswordIsAHash'] = "true"
+                kwargs["timeout"] = timeout
+            #           if self.plaintext:
+            #               kwargs['originalPasswordIsAHash'] = "true"
 
             response = PwnedPasswordsAPI.request("pwnedpassword", self.value, **kwargs)
         except exceptions.PasswordNotFound:
@@ -130,7 +132,8 @@ class Password(object):
             return count
 
     def range(self, timeout=None):
-        response = PwnedPasswordsAPI.request("range", self.value[:5].upper(), timeout=timeout)
+        response = PwnedPasswordsAPI.request(
+            "range", self.value[:5].upper(), timeout=timeout
+        )
         entries = dict(map(convert_password_tuple, response.upper().split("\r\n")))
         return entries
-
