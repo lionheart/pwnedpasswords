@@ -14,17 +14,22 @@
 
 import urllib.error
 
+
 class NoUserAgent(urllib.error.HTTPError):
     pass
+
 
 class PasswordNotFound(urllib.error.HTTPError):
     pass
 
+
 class RateLimitExceeded(urllib.error.HTTPError):
     pass
 
+
 class BadRequest(urllib.error.HTTPError):
     pass
+
 
 STATUS_CODES_TO_EXCEPTIONS = {
     400: BadRequest,
@@ -32,4 +37,3 @@ STATUS_CODES_TO_EXCEPTIONS = {
     404: PasswordNotFound,
     429: RateLimitExceeded,
 }
-
