@@ -14,6 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Python 2 compatibility
+from __future__ import absolute_import, division, print_function, unicode_literals
+from future import standard_library
+from builtins import *
+
+# urllib imports in Python 2.7
+standard_library.install_aliases()
+
+# Allow raise-from behavior in Python 2.7
+from future.utils import raise_from
+
+import sys
 import hashlib
 import logging
 import re
