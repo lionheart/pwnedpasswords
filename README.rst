@@ -4,7 +4,7 @@
      <img width="344" height="225" src="meta/repo-banner-small.png" />
    </p> -->
 
-|image0| |image1|
+|image1| |image2|
 
 |CI Status| |Version| |Python Versions|
 
@@ -157,7 +157,7 @@ database.
 
 If you’d like to prevent input from appearing in your history, specify
 the ``--stdin`` argument to provide input via stdin (h/t to
-[@tveastman](https://github.com/tveastman) for requesting this).
+`@tveastman <https://github.com/tveastman>`__ for requesting this).
 
 .. code:: bash
 
@@ -215,7 +215,7 @@ collecting this data and providing this service.
 Authors
 -------
 
-Dan Loewenherz / ([@dlo](https://github.com/dlo))
+Dan Loewenherz / (`@dlo <https://github.com/dlo>`__)
 
 See also
 --------
@@ -229,8 +229,8 @@ License
 
 Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
 
-.. |image0| image:: meta/repo-banner.png
-.. |image1| image:: meta/repo-banner-bottom.png
+.. |image1| image:: meta/repo-banner.png
+.. |image2| image:: meta/repo-banner-bottom.png
    :target: https://lionheartsw.com/
 .. |CI Status| image:: https://img.shields.io/travis/lionheart/pwnedpasswords.svg?style=flat
    :target: https://travis-ci.org/lionheart/pwnedpasswords
