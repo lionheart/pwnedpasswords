@@ -215,7 +215,10 @@ collecting this data and providing this service.
 Authors
 -------
 
-Dan Loewenherz / (`@dlo <https://github.com/dlo>`__)
+Dan Loewenherz / (`@dlo <https://github.com/dlo>`__) Matt Hoffman /
+(`@mjhoffman65 <https://github.com/mjhoffman65>`__) Hoan Ton-That /
+(`@hoan <https://github.com/hoan>`__) Thomas Kafetzis /
+(`@KafetzisThomas <https://github.com/KafetzisThomas>`__)
 
 See also
 --------
