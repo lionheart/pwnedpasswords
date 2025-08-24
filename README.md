@@ -152,6 +152,9 @@ Special thanks to [Troy Hunt](https://www.troyhunt.com) for collecting this data
 ## Authors
 
 Dan Loewenherz / ([@dlo](https://github.com/dlo))
+Matt Hoffman / ([@mjhoffman65](https://github.com/mjhoffman65))
+Hoan Ton-That / ([@hoan](https://github.com/hoan))
+Thomas Kafetzis / ([@KafetzisThomas](https://github.com/KafetzisThomas))
 
 ## See also
 
