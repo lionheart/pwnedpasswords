@@ -83,7 +83,11 @@ setup(
         metadata["__version__"]
     ),
     version=metadata["__version__"],
-    scripts=["bin/pwnedpasswords"],
+    entry_points={
+        "console_scripts": [
+            "pwnedpasswords=pwnedpasswords.__main__:main",
+        ],
+    },
     test_suite="nose.collector",
     tests_require=["nose"],
 )
