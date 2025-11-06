@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 import unittest
-from . import pwnedpasswords
+import pwnedpasswords
 
 
 class TestPwnedPasswords(unittest.TestCase):
     def setUp(self):
         self.value = "123123"
-        self.num_matches = 2194818
+        self.num_matches = 11885347
         self.password = pwnedpasswords.Password(self.value)
 
     def test_check(self):

@@ -19,11 +19,10 @@ METADATA_FILE := $(shell find . -name "metadata.py" -depth 2)
 all: clean test publish
 
 clean:
-	rm -rf dist/
+	rm -rf dist/ build/ *.egg-info
 
 test:
-	python setup.py test
-	python3 setup.py test
+	python -m unittest test_pwnedpasswords -v
 
 update_readme:
 	pandoc --from=markdown --to=rst --output=README.rst README.md
@@ -44,8 +43,6 @@ update_version:
 	git push --tags
 
 publish: clean update_readme update_version
-	python setup.py bdist_wheel --universal
-	python3 setup.py bdist_wheel --universal
-	# gpg --detach-sign -a dist/*.whl
+	python -m build
 	twine upload dist/*
 
