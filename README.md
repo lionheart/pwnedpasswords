@@ -71,14 +71,14 @@ This is the preferred method. By default, the `check` method uses the `https://a
 
 ```python
 pwnedpasswords.check("mypassword")
-# 34729
+# 250616
 ```
 
 If you'd like to force pwnedpasswords to use the search endpoint instead (https://api.pwnedpasswords.com/pwnedpassword/), set the `anonymous` parameter to `False`.
 
 ```python
 pwnedpasswords.check("password", anonymous=False)
-# 3303003
+# 46628605
 ```
 
 You might want to do this if you'd prefer faster response times, and aren't that worried about leaking passwords you're searching for over the network.
@@ -98,7 +98,9 @@ pwnedpasswords comes bundled with a handy command line utility.
 
 ```bash
 $ pwnedpasswords 123456password
-240
+2452
+$ python -m pwnedpasswords 123456password
+2452
 ```
 
 Output is simply the number of entries found in the Pwned Passwords database.
@@ -108,7 +110,7 @@ If you'd like to prevent input from appearing in your history, specify the `--st
 ```bash
 $ pwnedpasswords --stdin
 mypassword
-34729
+250616
 ```
 
 For help, just provide `-h` as a command-line argument.

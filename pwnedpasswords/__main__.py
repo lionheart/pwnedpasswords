@@ -16,6 +16,13 @@ class PwnedPasswordsCommandLineHandler(object):
         self.plain_text = namespace.plain_text
         self.verbosity = logging.DEBUG if namespace.verbose else logging.WARNING
 
+        # Configure logging handler for verbose output
+        if namespace.verbose:
+            logging.basicConfig(
+                level=logging.DEBUG,
+                format='%(levelname)s:%(name)s:%(message)s'
+            )
+
         try:
             self.password = Password(
                 namespace.password, self.plain_text, verbosity=self.verbosity
