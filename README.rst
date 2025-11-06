@@ -6,7 +6,7 @@
 
 |image1| |image2|
 
-|CI Status| |Version| |Python Versions|
+|Version| |Python Versions|
 
 ``pwnedpasswords`` is a small Python wrapper and command line utility
 that lets you check if a passphrase has been pwned using the `Pwned
@@ -116,7 +116,7 @@ This is the preferred method. By default, the ``check`` method uses the
 .. code:: python
 
    pwnedpasswords.check("mypassword")
-   # 34729
+   # 250616
 
 If you’d like to force pwnedpasswords to use the search endpoint instead
 (https://api.pwnedpasswords.com/pwnedpassword/), set the ``anonymous``
@@ -125,7 +125,7 @@ parameter to ``False``.
 .. code:: python
 
    pwnedpasswords.check("password", anonymous=False)
-   # 3303003
+   # 46628605
 
 You might want to do this if you’d prefer faster response times, and
 aren’t that worried about leaking passwords you’re searching for over
@@ -150,7 +150,9 @@ pwnedpasswords comes bundled with a handy command line utility.
 .. code:: bash
 
    $ pwnedpasswords 123456password
-   240
+   2452
+   $ python -m pwnedpasswords 123456password
+   2452
 
 Output is simply the number of entries found in the Pwned Passwords
 database.
@@ -163,7 +165,7 @@ the ``--stdin`` argument to provide input via stdin (h/t to
 
    $ pwnedpasswords --stdin
    mypassword
-   34729
+   250616
 
 For help, just provide ``-h`` as a command-line argument.
 
@@ -215,10 +217,11 @@ collecting this data and providing this service.
 Authors
 -------
 
-Dan Loewenherz / (`@dlo <https://github.com/dlo>`__) Matt Hoffman /
-(`@mjhoffman65 <https://github.com/mjhoffman65>`__) Hoan Ton-That /
-(`@hoan <https://github.com/hoan>`__) Thomas Kafetzis /
-(`@KafetzisThomas <https://github.com/KafetzisThomas>`__)
+- Dan Loewenherz / (`@dlo <https://github.com/dlo>`__)
+- Matt Hoffman / (`@mjhoffman65 <https://github.com/mjhoffman65>`__)
+- Hoan Ton-That / (`@hoan <https://github.com/hoan>`__)
+- Thomas Kafetzis /
+  (`@KafetzisThomas <https://github.com/KafetzisThomas>`__)
 
 See also
 --------
@@ -235,8 +238,6 @@ Apache License, Version 2.0. See `LICENSE <LICENSE>`__ for details.
 .. |image1| image:: meta/repo-banner.png
 .. |image2| image:: meta/repo-banner-bottom.png
    :target: https://lionheartsw.com/
-.. |CI Status| image:: https://img.shields.io/travis/lionheart/pwnedpasswords.svg?style=flat
-   :target: https://travis-ci.org/lionheart/pwnedpasswords
 .. |Version| image:: https://img.shields.io/pypi/v/pwnedpasswords.svg?style=flat
    :target: https://pypi.python.org/pypi/pwnedpasswords
 .. |Python Versions| image:: https://img.shields.io/pypi/pyversions/pwnedpasswords.svg?style=flat
