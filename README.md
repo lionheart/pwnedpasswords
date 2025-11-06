@@ -5,7 +5,6 @@
 ![](meta/repo-banner.png)
 [![](meta/repo-banner-bottom.png)][lionheart-url]
 
-[![CI Status][ci-badge]][travis-repo-url]
 [![Version][version-badge]][pypi-url]
 [![Python Versions][versions-badge]][pypi-url]
 
