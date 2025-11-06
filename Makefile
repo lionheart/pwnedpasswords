@@ -32,6 +32,8 @@ update_readme:
 
 update_version:
 	sed -i "" "s/\(__version__[ ]*=\).*/\1 \"$(VERSION)\"/g" $(METADATA_FILE)
+	sed -i "" "s/^version = .*/version = \"$(VERSION)\"/g" pyproject.toml
+	sed -i "" "s|\(Download = \"https://github.com/lionheart/pwnedpasswords/tarball/\).*\"|\1$(VERSION)\"|g" pyproject.toml
 	git add .
 	# - ignores errors in this command
 	-git commit -m "bump version to $(VERSION)"
